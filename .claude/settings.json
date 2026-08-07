@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($d = Get-PSDrive E -ErrorAction SilentlyContinue; $vol = Get-Volume -DriveLetter E -ErrorAction SilentlyContinue; Write-Output \"FileSystem: $\\($vol.FileSystemType\\)\"; Write-Output \"DriveType: $\\($vol.DriveType\\)\"; Write-Output \"Label: $\\($vol.FileSystemLabel\\)\")",
+      "PowerShell($item = Get-Item \"e:\\\\resumeBuilder\" -Force; Write-Output \"Attributes: $\\($item.Attributes\\)\"; Write-Output \"LinkType: $\\($item.LinkType\\)\"; Write-Output \"Target: $\\($item.Target\\)\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"name='node.exe'\" | Select-Object ProcessId, @{n='Cmd';e={$_.CommandLine}} | Format-List)",
+      "PowerShell(Get-NetTCPConnection -State Listen -LocalPort 5173 -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Id 15708 -Force)",
+      "PowerShell(Stop-Process -Id 14740 -Force -ErrorAction SilentlyContinue)",
+      "PowerShell($env:NO_COLOR='1'; & \"C:\\\\nvm4w\\\\nodejs\\\\node.exe\" \"E:\\\\resumeBuilder\\\\node_modules\\\\vite\\\\bin\\\\vite.js\" --host 127.0.0.1)",
+      "PowerShell(npm install tailwindcss @tailwindcss/vite)",
+      "PowerShell($conn = Get-NetTCPConnection -State Listen -LocalPort 5173 -ErrorAction SilentlyContinue; if \\($conn\\) { Write-Output \"RUNNING on $\\($conn.LocalAddress\\)\" } else { Write-Output \"NOT_RUNNING\" })",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:5173/\" -UseBasicParsing -TimeoutSec 5; Write-Output \"STATUS: $\\($r.StatusCode\\)\" } catch { Write-Output \"ERR: $\\($_.Exception.Message\\)\" })",
+      "PowerShell($env:NO_COLOR='1'; & \"C:\\\\nvm4w\\\\nodejs\\\\node.exe\" \"E:\\\\resumeBuilder\\\\node_modules\\\\vite\\\\bin\\\\vite.js\" --host 0.0.0.0 --port 5173)",
+      "PowerShell($ok=$false; 1..20 | ForEach-Object { if \\(-not $ok\\) { try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:5173/\" -UseBasicParsing -TimeoutSec 2; Write-Output \"READY: $\\($r.StatusCode\\)\"; $ok=$true } catch { Start-Sleep -Milliseconds 400 } } }; if \\(-not $ok\\) { Write-Output \"TIMEOUT\" })",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "Bash(rm -rf src/componenets/templates/basic src/componenets/templates/modern)",
+      "Bash(ls src/componenets/templates/)",
+      "Bash(grep -i playwright package.json)",
+      "Bash(ls -d .playwright-mcp)",
+      "Bash(ls *.png)",
+      "Bash(rm -rf .playwright-mcp)",
+      "Bash(rm -f basic-v*.png modern-v*.png basic-v1.png)",
+      "Bash(cp \"E:/resume-builder/public/templates/modern.png\" \"e:/resumeBuilder/src/assets/images/modern.png\" && echo \"thumbnail replaced\" && ls -la \"e:/resumeBuilder/src/assets/images/modern.png\")",
+      "Read(//c/Users/admin/Downloads/**)",
+      "Bash(pdftoppm -v)",
+      "Bash(magick -version)",
+      "Bash(python -c \"import fitz; print\\('pymupdf ok'\\)\")",
+      "Bash(python -c \"import fitz; print\\('installed ok'\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(npx eslint *)",
+      "PowerShell(npm install lucide-react)",
+      "PowerShell(npm install @tiptap/react @tiptap/starter-kit @tiptap/pm)",
+      "PowerShell(npm install sweetalert2)",
+      "PowerShell(Copy-Item \"E:\\\\resume-builder\\\\public\\\\templates\\\\classic.png\" \"e:\\\\resumeBuilder\\\\src\\\\assets\\\\images\\\\classic.png\")",
+      "PowerShell(npm install react-to-print)",
+      "PowerShell(npm install -D wrangler)",
+      "PowerShell(npm run build)",
+      "PowerShell(npm install)",
+      "Bash(npm ci *)",
+      "Bash(npm -v)",
+      "Bash(git commit -m '@ *)",
+      "Bash(git commit --amend -m 'Fix Cloudflare build: regenerate package-lock and pin Node 24 *)"
+    ],
+    "additionalDirectories": [
+      "E:\\resume-builder\\public\\templates"
+    ]
+  }
+}
